@@ -55,7 +55,7 @@ public class ProductoIT {
         
         instance.setNombre(nombreProducto, usuario);
         
-        String result = Mensaje.EXITO;
+        String result = Mensaje.Mensage.EXITO.name();
         
         assertEquals(instance.getMensaje(), result);
     }
@@ -67,7 +67,7 @@ public class ProductoIT {
         String nombreProducto = "Hamburguesa con queso";
         Usuario usuario = new Usuario("Jhon Doe",new Rol(Rol.getCajero()));
         instance.setNombre(nombreProducto, usuario);
-        String result = Mensaje.ACCESO_DENEGADO;
+        String result = Mensaje.Mensage.EXITO.name();
         assertEquals(instance.getMensaje(), result);
     }
 
@@ -81,7 +81,7 @@ public class ProductoIT {
         Usuario usuario = new Usuario("Jhon Doe", new Rol(Rol.getGerente()));
         Producto instance = new Producto("Papas fritas");
         instance.setPrecio(precio, usuario);
-        assertEquals(instance.getMensaje(),Mensaje.EXITO);
+        assertEquals(instance.getMensaje(),Mensaje.Mensage.EXITO.name());
     }
     @Test
     public void testSetPrecio_Error() {
@@ -90,7 +90,7 @@ public class ProductoIT {
         Usuario usuario = new Usuario("Jhon Doe", new Rol(Rol.getCliente()));
         Producto instance = new Producto("Papas fritas");
         instance.setPrecio(precio, usuario);
-        assertEquals(instance.getMensaje(),Mensaje.ACCESO_DENEGADO);
+        assertEquals(instance.getMensaje(),Mensaje.Mensage.ACCESO_DENEGADO.name());
     }
 
     /**
@@ -104,7 +104,7 @@ public class ProductoIT {
         Producto instance = new Producto();
         instance.addIngrediente(ingrediente, usuario);
         String mensaje = instance.getMensaje();
-        assertEquals(mensaje, Mensaje.EXITO);
+        assertEquals(mensaje, Mensaje.Mensage.EXITO);
     }    
     @Test
     public void testAddIngrediente_Error() {
@@ -114,7 +114,7 @@ public class ProductoIT {
         Producto instance = new Producto();
         instance.addIngrediente(ingrediente, usuario);
         String mensaje = instance.getMensaje();
-        assertEquals(mensaje, Mensaje.ACCESO_DENEGADO);
+        assertEquals(mensaje, Mensaje.Mensage.ACCESO_DENEGADO);
     }  
     
     @Test
@@ -125,7 +125,7 @@ public class ProductoIT {
         producto.addIngrediente(ingrediente, usuario);
         producto.delIngrediente(ingrediente, usuario);
         String mensaje = producto.getMensaje();
-        assertEquals(mensaje,Mensaje.EXITO);
+        assertEquals(mensaje,Mensaje.Mensage.EXITO);
     }
     
     @Test
@@ -136,7 +136,7 @@ public class ProductoIT {
         producto.addIngrediente(ingrediente, usuario);
         producto.delIngrediente(ingrediente, usuario);
         String mensaje = producto.getMensaje();
-        assertEquals(mensaje,Mensaje.ACCESO_DENEGADO);
+        assertEquals(mensaje,Mensaje.Mensage.ACCESO_DENEGADO);
     }
     
     @Test
@@ -150,7 +150,7 @@ public class ProductoIT {
         producto.delIngrediente(ingrediente2, usuario);
         
         String mensaje = producto.getMensaje();
-        assertEquals(mensaje,Mensaje.NO_ENCONTRADO);
+        assertEquals(mensaje,Mensaje.Mensage.NO_ENCONTRADO);
     }
 
     /**
